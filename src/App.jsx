@@ -1,21 +1,20 @@
 import { useState } from "react";
 import "./App.css";
-import { Home } from "./components/Home.jsx";
-import { Login } from "./components/Login.jsx";
+import { Home } from "./components/pages/Home.jsx";
+import { Login } from "./components/pages/Login.jsx";
 import { appFirebase } from "./credenciales.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LoggedIn } from "./components/LoggedIn.jsx";
+import { LoggedIn } from "./components/pages/LoggedIn.jsx";
 import { ProtectedRoute } from "./components/utils/ProtectedRoute.jsx";
 import { Header } from "./components/Header.jsx";
-import { SignIn } from "./components/SignIn.jsx";
+import { SignIn } from "./components/pages/SignIn.jsx";
 const auth = getAuth(appFirebase);
 
 function App() {
   const [isLogged, setIsLogged] = useState(true);
 
   onAuthStateChanged(auth, (userFirebase) => {
-    console.log(userFirebase);
     if (userFirebase) {
       setIsLogged(userFirebase);
     }
