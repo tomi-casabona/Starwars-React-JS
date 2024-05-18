@@ -3,7 +3,13 @@ export const Header = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-row w-full justify-around bg-black text-white">
-      <div className="w-1/4"></div>
+      <div className="w-1/4 p-4">
+        {" "}
+        <div className="btn " onClick={() => navigate("/")}>
+          {" "}
+          Home
+        </div>
+      </div>
       <h1 className="w-2/4 text-center font-extrabold text-3xl p-4">
         StarWars
       </h1>
@@ -12,7 +18,10 @@ export const Header = () => {
           {" "}
           LogIn
         </div>
-        <div className="btn">SignIn</div>
+        <div className="btn" onClick={() => navigate("/signIn")}>
+          {" "}
+          SignIn
+        </div>
       </div>
     </div>
   );

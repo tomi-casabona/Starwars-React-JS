@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoggedIn } from "./components/LoggedIn.jsx";
 import { ProtectedRoute } from "./components/utils/ProtectedRoute.jsx";
 import { Header } from "./components/Header.jsx";
+import { SignIn } from "./components/SignIn.jsx";
 const auth = getAuth(appFirebase);
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/logIn" element={<Login />} />
+          <Route path="/signIn" element={<SignIn />} />
           <Route element={<ProtectedRoute isAuthorized={isLogged} />}>
             <Route path="/loggedIn" element={<LoggedIn />} />
           </Route>
