@@ -29,10 +29,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/logIn" element={<Login />} />
           <Route path="/signIn" element={<SignIn />} />
-          <Route path="/starshipDetail" element={<StarShipDetail />} />
-          <Route element={<ProtectedRoute isAuthorized={isLogged} />}>
-            <Route path="/loggedIn" element={<LoggedIn />} />
-          </Route>
+            <Route element={<ProtectedRoute isAuthorized={isLogged} />}>
+              <Route path="/loggedIn" element={<LoggedIn />} />
+              <Route path="/starshipDetail" element={<StarShipDetail />} />
+            </Route>
         </Routes>
       </BrowserRouter>
       ;
