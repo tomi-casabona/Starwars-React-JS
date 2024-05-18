@@ -9,6 +9,7 @@ import { LoggedIn } from "./components/pages/LoggedIn.jsx";
 import { ProtectedRoute } from "./components/utils/ProtectedRoute.jsx";
 import { Header } from "./components/Header.jsx";
 import { SignIn } from "./components/pages/SignIn.jsx";
+import { StarShipDetail } from "./components/shipsComponents/StarshipDetail.jsx";
 const auth = getAuth(appFirebase);
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/logIn" element={<Login />} />
           <Route path="/signIn" element={<SignIn />} />
+          <Route path="/starshipDetail" element={<StarShipDetail />} />
           <Route element={<ProtectedRoute isAuthorized={isLogged} />}>
             <Route path="/loggedIn" element={<LoggedIn />} />
           </Route>
