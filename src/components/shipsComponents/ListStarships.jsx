@@ -1,12 +1,10 @@
 import { StarshipCard } from "./StarshipCard";
 
-export const ListStarships = ({ starships }) => {
+export const ListStarships = ({ starship }) => {
   // url is used like ID in key parameter
   return (
     <div className="bg-slate-900 pt-2">
-      {starships.map((starship) => (
-        <StarshipCard key={starship.url} starship={starship} />
-      ))}
+        <StarshipCard starship={starship} />
     </div>
   );
 };
