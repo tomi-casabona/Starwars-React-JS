@@ -4,21 +4,21 @@ import { appFirebase } from "../../credenciales";
 import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(appFirebase);
-//console.log(auth)
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const Navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate("/loggedIn");
       // El usuario ha iniciado sesión exitosamente
       // TODO : cambiar estado general a logeado
-      Navigate("/LoggedIn");
     } catch (error) {
       setError(error.message);
     }

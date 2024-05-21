@@ -1,5 +1,5 @@
-import { getAuth, signOut } from "firebase/auth";
-import { appFirebase } from "../../credenciales";
+import { signOut } from "firebase/auth";
+import { auth } from "../../credenciales";
 import { ListStarships } from "../shipsComponents/ListStarships";
 const starshipsObject = {
   count: 36,
@@ -247,8 +247,6 @@ const starshipsObject = {
 };
 
 export const LoggedIn = () => {
-  const auth = getAuth(appFirebase);
-
   const handleSignOut = () => {
     signOut(auth);
     // TODO : cambiar el estado a deslogueado

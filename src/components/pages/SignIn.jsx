@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/userSlice";
 import { auth } from "../../credenciales";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -9,11 +10,14 @@ export const SignIn = () => {
   const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      dispatch(createUser(auth, userEmail, userPassword));
+      await dispatch(
+        createUser({ auth, email: userEmail, password: userPassword })
+      );
+      navigate("/logIn");
     } catch (error) {
       setError(error.message);
     }
@@ -23,7 +27,7 @@ export const SignIn = () => {
     <div className="bg-black text-white h-screen w-full">
       <h2 className="text-center font-extrabold text-2xl">Create an account</h2>
       <form
-        className="border-4 border-red-400 mx-auto p-4 flex flex-col w-1/2 rounded-md self-center  "
+        className="border-4 border-red-400 mx-auto p-4 flex flex-col w-1/2 rounded-md self-center"
         onSubmit={handleSignIn}
       >
         <label htmlFor="email">Email</label>

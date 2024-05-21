@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Home } from "./components/pages/Home.jsx";
 import { Login } from "./components/pages/Login.jsx";
@@ -13,15 +13,22 @@ import { StarShipDetail } from "./components/shipsComponents/StarshipDetail.jsx"
 import { Provider } from "react-redux";
 import { store } from "./redux/store.jsx";
 
-
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
 
-  onAuthStateChanged(auth, (userFirebase) => {
-    if (userFirebase) {
-      setIsLogged(userFirebase);
-    }
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (userFirebase) => {
+      console.log(userFirebase);
+      if (userFirebase) {
+        setIsLogged(userFirebase);
+      } else {
+        setIsLogged(null);
+      }
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
 
   return (
     <>
