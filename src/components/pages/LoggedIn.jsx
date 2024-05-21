@@ -1,12 +1,12 @@
-import { getAuth, signOut } from 'firebase/auth';
-import { appFirebase } from '../../credenciales';
-import { ListStarships } from '../shipsComponents/ListStarships';
-import { fetchStarships } from '../../helpers/fetchStarships';
-import { useState, useEffect } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import { getAuth, signOut } from "firebase/auth";
+import { appFirebase } from "../../credenciales";
+import { ListStarships } from "../shipsComponents/ListStarships";
+import { fetchStarships } from "../../helpers/fetchStarships";
+import { useState, useEffect } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export const LoggedIn = () => {
-  const [url, setUrl] = useState('https://swapi.dev/api/starships/?page=1');
+  const [url, setUrl] = useState("https://swapi.dev/api/starships/?page=1");
   const [starshipsObject, setStarshipsObject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -36,7 +36,7 @@ export const LoggedIn = () => {
   }, [url]);
 
   const viewMore = () => {
-    console.log('loaded more');
+    console.log("loaded more");
     if (starshipsObject.next) {
       setLoading(true);
       setError(null);
@@ -58,7 +58,9 @@ export const LoggedIn = () => {
           hasMore={starshipsObject.next}
           loader={<div>Loading...</div>}
         >
-          {starshipsObject.results.map((starship) => <ListStarships key={starship.url} starship={starship} />)}
+          {starshipsObject.results.map((starship) => (
+            <ListStarships key={starship.url} starship={starship} />
+          ))}
         </InfiniteScroll>
       )}
 
