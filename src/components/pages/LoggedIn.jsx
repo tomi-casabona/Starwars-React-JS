@@ -249,10 +249,14 @@ const starshipsObject = {
 export const LoggedIn = () => {
   const auth = getAuth(appFirebase);
 
+  const handleSignOut = () => {
+    signOut(auth);
+    // TODO : cambiar el estado a deslogueado
+  };
   return (
     <div>
-      <ListStarships starships={starshipsObject.results}/>
-      <button className="btn btn-secondary" onClick={() => signOut(auth)}>
+      <ListStarships starships={starshipsObject.results} />
+      <button className="btn btn-secondary" onClick={handleSignOut}>
         sign Out
       </button>
     </div>
