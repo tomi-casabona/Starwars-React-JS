@@ -5,6 +5,7 @@ export const StarShipDetail = () => {
   const location = useLocation();
   const { starship } = location.state || {};
   const id = getIdFromURL(starship.url);
+  
   const starshipURL = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
 
   return (

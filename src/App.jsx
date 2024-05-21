@@ -10,6 +10,8 @@ import { ProtectedRoute } from "./components/utils/ProtectedRoute.jsx";
 import { Header } from "./components/Header.jsx";
 import { SignIn } from "./components/pages/SignIn.jsx";
 import { StarShipDetail } from "./components/shipsComponents/StarshipDetail.jsx";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.jsx";
 const auth = getAuth(appFirebase);
 
 function App() {
@@ -23,18 +25,20 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/logIn" element={<Login />} />
-          <Route path="/signIn" element={<SignIn />} />
+      <Provider store={store}>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/logIn" element={<Login />} />
+            <Route path="/signIn" element={<SignIn />} />
             <Route element={<ProtectedRoute isAuthorized={isLogged} />}>
               <Route path="/loggedIn" element={<LoggedIn />} />
               <Route path="/starshipDetail" element={<StarShipDetail />} />
             </Route>
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
       ;
     </>
   );
