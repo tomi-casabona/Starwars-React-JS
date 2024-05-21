@@ -2,27 +2,23 @@ import { useNavigate } from "react-router-dom";
 export const Header = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-row w-full justify-around bg-black text-white">
-      <div className="w-1/4 p-4">
-        {" "}
-        <div className="btn " onClick={() => navigate("/")}>
-          {" "}
-          Home
+    <header className="w-full flex justify-center items-center bg-transparent text-white h-36 border-b-[1px] border-gray-500">
+      <div className="w-1/4 p-4 flex justify-center">
+        <div className="btn btn-ghost" onClick={() => navigate("/")}>
+          Social Media
         </div>
       </div>
-      <h1 className="w-2/4 text-center font-extrabold text-3xl p-4">
-        StarWars
-      </h1>
-      <div className="flex w-1/4 text-center justify-end font-bold text-lg p-4 mx-2 gap-2 ">
-        <div className="btn" onClick={() => navigate("/logIn")}>
-          {" "}
-          LogIn
-        </div>
-        <div className="btn" onClick={() => navigate("/signIn")}>
-          {" "}
+      <div className="w-2/4 h-full cursor-pointer flex items-center" onClick={() => navigate('/')}>
+        <img className="h-3/5 mx-auto" src="https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254"/>
+      </div>
+      <div className="w-1/4 flex justify-center">
+        <button className="btn btn-ghost uppercase" onClick={() => navigate("/logIn")}>
+          Log In
+        </button>
+        <button className="btn btn-ghost uppercase" onClick={() => navigate("/signIn")}>
           SignIn
-        </div>
+        </button>
       </div>
-    </div>
+    </header>
   );
 };

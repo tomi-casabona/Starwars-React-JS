@@ -4,6 +4,6 @@ import App from "./App.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App className="m-0 p-0" />
+    <App />
   </React.StrictMode>
 );
