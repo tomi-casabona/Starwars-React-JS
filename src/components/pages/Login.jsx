@@ -4,7 +4,7 @@ import { appFirebase } from "../../credenciales";
 import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(appFirebase);
-console.log(auth)
+//console.log(auth)
 
 export const Login = () => {
   const [email, setEmail] = useState("");
