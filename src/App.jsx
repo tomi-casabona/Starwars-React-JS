@@ -27,15 +27,14 @@ function App() {
   }, []);
 
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
-          <Header />
-          <AppRoutes isLogged={isLogged} />
-        </div>
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
+        <Header />
+        <AppRoutes isLogged={isLogged} />
+      </div>
+    </BrowserRouter>
   );
 }
+
 
 export default App;
