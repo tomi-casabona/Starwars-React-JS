@@ -1,46 +1,20 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-
-export const createUser = createAsyncThunk(
-  "user/createUser",
-  async ({ auth, email, password }) => {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    return userCredential.user;
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    user: null,
-    status: "idle",
-    error: null,
+    isLogged: false,
+    email: "",
   },
   reducers: {
-    // todo: funciones para modificar el state
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(createUser.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(createUser.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        console.log(action.payload);
-        state.user = action.payload; // Actualiza el estado con el usuario creado
-        console.log("Usuario creado con éxito");
-      })
-      .addCase(createUser.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-        console.error("Error al crear usuario:", action.error.message);
-      });
+    setIsLogged: (state, action) => {
+      state.isLogged = action.payload;
+    },
+    setEmail: (state, action) => {
+      state.email = action.payload;
+    },
   },
 });
 
-export const { actions } = userSlice.actions;
+export const { setEmail, setIsLogged } = userSlice.actions;
 export default userSlice.reducer;
