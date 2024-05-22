@@ -28,26 +28,14 @@ function App() {
     // Limpiar la suscripción cuando el componente se desmonte
     return () => unsubscribe();
   }, [auth]);
-  
+
   return (
-<<<<<<< HEAD
     <BrowserRouter>
       <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
         <Header />
         <AppRoutes isLogged={isLogged} />
       </div>
     </BrowserRouter>
-=======
-
-    <Provider store={store}>
-      <BrowserRouter>
-        <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
-          <Header />
-          <AppRoutes isLogged={isLogged} />
-        </div>
-      </BrowserRouter>
-    </Provider>
->>>>>>> main
   );
 }
 
