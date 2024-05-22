@@ -4,7 +4,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     isLogged: false,
-    email: "",
+    email: "prueba",
   },
   reducers: {
     setIsLogged: (state, action) => {

@@ -5,8 +5,9 @@ import { SignIn } from "../components/pages/SignIn"
 import { ProtectedRoute } from "../components/utils/ProtectedRoute"
 import { LoggedIn } from "../components/pages/LoggedIn"
 import { StarShipDetail } from "../components/shipsComponents/StarshipDetail"
+import { Prueba } from "../components/pages/Prueba"
 
-export const AppRoutes = (isLogged) => {
+export const AppRoutes = ({isLogged}) => {
     return (
         <Routes>
           <Route path="/" element={<Home />} />
@@ -15,6 +16,7 @@ export const AppRoutes = (isLogged) => {
             <Route element={<ProtectedRoute isAuthorized={isLogged} />}>
               <Route path="/loggedIn" element={<LoggedIn />} />
               <Route path="/starshipDetail" element={<StarShipDetail />} />
+              <Route path="/prueba" element={<Prueba />} />
             </Route>
         </Routes>
     )
