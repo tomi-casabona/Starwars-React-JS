@@ -6,13 +6,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { BrowserRouter } from "react-router-dom";
 import { Header } from "./components/Header.jsx";
 import { AppRoutes } from "./helpers/routes.jsx";
+import { Footer } from "./components/Footer.jsx";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userFirebase) => {
-      console.log(userFirebase);
       if (userFirebase) {
         setIsLogged(userFirebase);
       } else {
@@ -25,14 +25,13 @@ function App() {
   }, []);
 
   return (
-    <>
-      <BrowserRouter>
-      <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
+    <BrowserRouter>
+      <div className="bg-body-img bg-fixed bg-cover bg-no-repeat min-h-screen font-kanit flex flex-col">
         <Header />
         <AppRoutes isLogged={isLogged} />
+        <Footer />
       </div>
-      </BrowserRouter>
-    </>
+    </BrowserRouter>
   );
 }
 
