@@ -1,11 +1,11 @@
 import "./assets/fonts.css";
 import "./assets/App.css";
-import { appFirebase } from "./credenciales.js";
+import { appFirebase } from "./firebase/firebase-config.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { BrowserRouter } from "react-router-dom";
 import { Header } from "./components/Header.jsx";
 import { AppRoutes } from "./helpers/routes.jsx";
-import { Footer } from "./components/Footer.jsx"
+import { Footer } from "./components/Footer.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setEmail, setIsLogged } from "./redux/slices/userSlice.js";

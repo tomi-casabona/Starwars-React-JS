@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Home } from "../components/pages/Home";
 import { Login } from "../components/pages/Login";
 import { SignIn } from "../components/pages/SignIn";
-import { ProtectedRoute } from "../components/utils/ProtectedRoute";
+import { ProtectedRoute } from "../utils/ProtectedRoute";
 import { LoggedIn } from "../components/pages/LoggedIn";
 import { StarShipDetail } from "../components/shipsComponents/StarshipDetail";
 import { Prueba } from "../components/pages/Prueba";
