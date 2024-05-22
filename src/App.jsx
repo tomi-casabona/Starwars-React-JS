@@ -14,7 +14,6 @@ function App() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userFirebase) => {
-      console.log(userFirebase);
       if (userFirebase) {
         setIsLogged(userFirebase);
       } else {
@@ -27,6 +26,7 @@ function App() {
   }, []);
 
   return (
+
     <Provider store={store}>
       <BrowserRouter>
         <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
