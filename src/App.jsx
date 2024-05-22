@@ -8,6 +8,7 @@ import { Header } from "./components/Header.jsx";
 import { AppRoutes } from "./helpers/routes.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.jsx";
+import { Footer } from "./components/Footer.jsx"
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -29,9 +30,10 @@ function App() {
 
     <Provider store={store}>
       <BrowserRouter>
-        <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
+        <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit flex flex-col">
           <Header />
           <AppRoutes isLogged={isLogged} />
+          <Footer />
         </div>
       </BrowserRouter>
     </Provider>

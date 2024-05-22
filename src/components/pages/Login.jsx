@@ -39,13 +39,13 @@ export const Login = () => {
         >
           <div className="relative rounded-xl overflow-hidden">
             <input
-              className="w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black"
+              className="autofill:bg-gray-300 w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black "
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label htmlFor="email" className={`text-gray-500 absolute left-4 top-5 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${email && 'top-1 text-xs'}`}>Email</label>
+            <label htmlFor="email" className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${email ? 'top-1 text-xs' : 'top-5'}`}>Email</label>
           </div>
           <div className="relative rounded-xl overflow-hidden">
             <input
@@ -55,7 +55,7 @@ export const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label htmlFor="password" className={`text-gray-500 absolute left-4 top-5 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${password && 'top-1 text-xs'}`}>Password</label>
+            <label htmlFor="password" className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${password ? 'top-1 text-xs' : 'top-5'}`}>Password</label>
           </div>
           <button className="bg-yellow-300 rounded-full p-4 text-zinc-900 hover:bg-yellow-400 duration-200" type="submit">
             Continue

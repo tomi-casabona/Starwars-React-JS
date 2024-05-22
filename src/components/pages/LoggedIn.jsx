@@ -39,14 +39,14 @@ export const LoggedIn = () => {
 
   return (
     <>
-      <div className='w-1/2 mx-auto flex-1'>
+      <div className='w-full sm:w-1/2 mx-auto flex-1'>
         {starshipsObject && (
           <InfiniteScroll
             dataLength={starshipsObject.results.length}
             next={viewMore}
             hasMore={starshipsObject.next}
             loader={<div className='text-center text-2xl my-6'>Loading...</div>}
-            className='grid-flow-row grid-cols-4 grid gap-2 p-3 overflow-visible'
+            className='grid-flow-row grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid gap-2 p-3 overflow-visible'
           >
             {starshipsObject.results.map((starship) => <StarshipCard key={starship.url} starship={starship} />)}
           </InfiniteScroll>

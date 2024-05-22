@@ -23,7 +23,7 @@ export const StarshipCard = ({ starship }) => {
         <div className="px-4 font-orbitron font-bold text-xl text-zinc-50 mt-5">
           {starship.name}
         </div>
-        <div className="px-4 font-normal text-lg text-zinc-600">
+        <div className="px-4 font-normal text-lg text-zinc-600 mb-5">
           {starship.model}
         </div>
       </div>
