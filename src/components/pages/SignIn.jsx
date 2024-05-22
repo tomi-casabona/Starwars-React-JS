@@ -1,22 +1,18 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createUser } from "../../redux/userSlice";
 import { auth } from "../../credenciales";
 import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export const SignIn = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      await dispatch(
-        createUser({ auth, email: userEmail, password: userPassword })
-      );
+      createUserWithEmailAndPassword(auth, userEmail, userPassword);
       navigate("/logIn");
     } catch (error) {
       setError(error.message);

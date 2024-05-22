@@ -1,42 +1,43 @@
-import { useEffect, useState } from "react";
 import "./assets/fonts.css";
 import "./assets/App.css";
-import { auth } from "./credenciales.js";
-import { onAuthStateChanged } from "firebase/auth";
+import { appFirebase } from "./credenciales.js";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { BrowserRouter } from "react-router-dom";
 import { Header } from "./components/Header.jsx";
 import { AppRoutes } from "./helpers/routes.jsx";
-import { Provider } from "react-redux";
-import { store } from "./redux/store.jsx";
 import { Footer } from "./components/Footer.jsx"
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { setEmail, setIsLogged } from "./redux/slices/userSlice.js";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const isLogged = useSelector((state) => state.user.isLogged);
+  const dispatch = useDispatch();
+  const auth = getAuth(appFirebase);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userFirebase) => {
       if (userFirebase) {
-        setIsLogged(userFirebase);
+        dispatch(setIsLogged(true));
+        dispatch(setEmail(userFirebase.email));
       } else {
-        setIsLogged(null);
+        dispatch(setIsLogged(false));
+        dispatch(setEmail("vACIO  "));
       }
     });
 
-    // Cleanup subscription on unmount
+    // Limpiar la suscripción cuando el componente se desmonte
     return () => unsubscribe();
-  }, []);
+  }, [auth]);
 
   return (
-
-    <Provider store={store}>
-      <BrowserRouter>
-        <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit flex flex-col">
-          <Header />
-          <AppRoutes isLogged={isLogged} />
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
+        <Header />
+        <AppRoutes isLogged={isLogged} />
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
