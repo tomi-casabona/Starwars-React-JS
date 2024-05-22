@@ -4,10 +4,10 @@ export const StarshipCard = ({ starship }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="flex flex-col m-4 p-4 border-sky-200 rounded-lg bg-black text-white"
+      className="w-1/2 mx-auto my-3 p-4 rounded-md bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500"
       onClick={() => navigate("/starshipDetail", { state: { starship } })}
     >
-      <div className="font-bold text-xl">{starship.name}</div>
+      <div className="font-orbitron font-bold text-xl text-white">{starship.name}</div>
       <div className="font-normal text-lg">{starship.model}</div>
     </div>
   );
