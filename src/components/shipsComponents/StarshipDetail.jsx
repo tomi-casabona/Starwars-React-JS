@@ -13,13 +13,12 @@ export const StarShipDetail = () => {
   }
 
   return (
-
     <div className="bg-detail bg-cover bg-center bg-no-repeat w-full flex-1">
       <div className="w-11/12 mx-auto">
         <h2 className="my-10 font-orbitron p-3 uppercase border-t border-b border-gray-500 text-white text-2xl">StarShip</h2>
         <div className="border border-gray-500 w-full mx-auto my-10 rounded-2xl overflow-hidden flex flex-col lg:flex-row justify-center min-h-80">
           <div className="w-full lg:w-1/3 overflow-hidden">
-            <img className="w-full h-full object-cover object-center" src={`${starshipURL}`} onError={handleImageError} />
+            <img className="w-full h-full object-cover object-center" src={starshipURL} onError={handleImageError} />
           </div>
           <div className="w-full lg:w-2/3 bg-zinc-950 bg-opacity-50 lg:border-s-4 border-s-red-400 p-4 font-orbitron">
             <h3 className="text-2xl text-white font-bold uppercase my-3">{starship.name ? starship.name : "Name is not found"}</h3>
