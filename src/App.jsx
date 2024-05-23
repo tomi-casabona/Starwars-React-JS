@@ -6,12 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import { Header } from "./components/Header.jsx";
 import { AppRoutes } from "./helpers/routes.jsx";
 import { Footer } from "./components/Footer.jsx";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setEmail, setIsLogged } from "./redux/slices/userSlice.js";
 
 function App() {
-  const isLogged = useSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
   const auth = getAuth(appFirebase);
 
@@ -34,7 +33,7 @@ function App() {
     <BrowserRouter>
       <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
         <Header />
-        <AppRoutes isLogged={isLogged} />
+        <AppRoutes />
         <Footer />
       </div>
     </BrowserRouter>

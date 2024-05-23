@@ -30,7 +30,6 @@ export const LoggedIn = () => {
   }, [url]);
 
   const viewMore = () => {
-    console.log('loaded more');
     if (starshipsObject.next) {
       setError(null);
       setUrl(starshipsObject.next);

@@ -6,8 +6,11 @@ import { ProtectedRoute } from "../utils/ProtectedRoute";
 import { LoggedIn } from "../components/pages/LoggedIn";
 import { StarShipDetail } from "../components/shipsComponents/StarshipDetail";
 import { Prueba } from "../components/pages/Prueba";
+import { useSelector } from "react-redux";
 
-export const AppRoutes = ({ isLogged }) => {
+export const AppRoutes = () => {
+  const isLogged = useSelector((state) => state.user.isLogged);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
