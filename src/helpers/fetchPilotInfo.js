@@ -4,8 +4,7 @@ export const fetchPilotInfo = async (url) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    const result = await response.json();
-    return result;
+    return response.json();
   } catch (error) {
     console.error("may the force be with you");
     console.error("There has been a problem with your fetch operation:", error);
