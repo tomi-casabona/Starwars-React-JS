@@ -1,7 +1,7 @@
 import { fetchStarships } from '../../helpers/fetchStarships';
 import { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { StarshipCard } from '../shipsComponents/StarshipCard';
+import { ListStarships } from '../shipsComponents/ListStarships';
 
 export const LoggedIn = () => {
   const [url, setUrl] = useState('https://swapi.dev/api/starships/?page=1');
@@ -38,16 +38,16 @@ export const LoggedIn = () => {
 
   return (
     <>
-      <div className='w-full sm:w-1/2 mx-auto flex-1'>
+      <div className="w-full sm:w-1/2 mx-auto flex-1">
         {starshipsObject && (
           <InfiniteScroll
             dataLength={starshipsObject.results.length}
             next={viewMore}
             hasMore={starshipsObject.next}
-            loader={<div className='text-center text-2xl my-6'>Loading...</div>}
-            className='grid-flow-row grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid gap-2 p-3 overflow-visible'
+            loader={<div className="text-center text-2xl my-6">Loading...</div>}
+            className="grid-flow-row grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid gap-2 p-3 overflow-visible"
           >
-            {starshipsObject.results.map((starship) => <StarshipCard key={starship.url} starship={starship} />)}
+            <ListStarships starshipsObject={starshipsObject} />
           </InfiniteScroll>
         )}
       </div>
