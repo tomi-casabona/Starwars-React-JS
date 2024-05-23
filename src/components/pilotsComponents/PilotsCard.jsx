@@ -1,9 +1,11 @@
-import { getIdFromURL } from "../../helpers/getIdFromURL";
+import { getPilotIdFromURL } from "../../helpers/getPilotIdFromURL";
 import { fetchPilotInfo } from "../../helpers/fetchPilotInfo";
 
 export const PilotsCard = ({ pilotURL }) => {
+  
   const pilot = fetchPilotInfo(pilotURL);
-  const id = getIdFromURL(pilot.url);
+
+  const id = getPilotIdFromURL(pilot.url);
   const pilotImageURL = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
 
   const handleImageError = (event) => {
