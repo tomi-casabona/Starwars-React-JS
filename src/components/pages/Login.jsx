@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { appFirebase } from "../../firebase/firebase-config";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { appFirebase } from '../../firebase/firebase-config';
+import { useNavigate } from 'react-router-dom';
 
 const auth = getAuth(appFirebase);
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/loggedIn");
+      navigate('/loggedIn');
       // El usuario ha iniciado sesión exitosamente
       // TODO : cambiar estado general a logeado
       // TODO: Si el usuario está loggeado, redirigir a Starships
@@ -47,15 +47,21 @@ export const Login = () => {
           </svg>
         </div>
         <h2 className="font-sans font-bold text-zinc-900 text-2xl">
-          Enter your email and password to continue:
+          Log In to continue:
         </h2>
-        <p className="my-4 font-sans text-gray-900 text-sm">
+        <p className="my-4 font-sans text-sm">
           Log in to Star Wars Starship Catalog to view a complete list of the
-          Starships from the movie. If you dont have one, go to{" "}
-          <a href="/signIn" className="underline hover:no-underline">
-            Sign In
+          Starships from the movie.
+        </p>
+        <p className="font-normal text-gray-500">
+          You don't have an account?{' '}
+          <a
+            href="/signIn"
+            className="underline hover:no-underline text-gray-700"
+          >
+            Register Now
           </a>
-          :
+          !
         </p>
         <form className="my-3 form-control gap-3" onSubmit={handleLogin}>
           <div className="relative rounded-xl overflow-hidden">
@@ -68,7 +74,9 @@ export const Login = () => {
             />
             <label
               htmlFor="email"
-              className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${email ? "top-1 text-xs" : "top-5"}`}
+              className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${
+                email ? 'top-1 text-xs' : 'top-5'
+              }`}
             >
               Email
             </label>
@@ -83,7 +91,9 @@ export const Login = () => {
             />
             <label
               htmlFor="password"
-              className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${password ? "top-1 text-xs" : "top-5"}`}
+              className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${
+                password ? 'top-1 text-xs' : 'top-5'
+              }`}
             >
               Password
             </label>
@@ -101,7 +111,7 @@ export const Login = () => {
             Star Wars Catalog was developed with Swapi API.
           </h3>
           <p className="font-sans text-sm">
-            You can use this API heading to{" "}
+            You can use this API heading to{' '}
             <a className="underline" href="https://swapi.dev/api/starships/">
               Swapi Website
             </a>

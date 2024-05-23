@@ -1,18 +1,12 @@
 import { useLocation } from "react-router-dom";
 import { getIdFromURL } from "../../helpers/getIdFromURL";
-import { ListPilots } from "../pilotsComponents/ListPilots";
+import { handleImageError } from "../../utils/handleImageError";
 
 export const StarShipDetail = () => {
   const location = useLocation();
   const { starship } = location.state || {};
   const id = getIdFromURL(starship.url);
   const starshipURL = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
-
-  const handleImageError = (event) => {
-    event.target.onerror = null;
-    event.target.src =
-      "https://i0.wp.com/teamsbackground.net/wp-content/uploads/2020/04/star-wars-backgrounds-38.jpg?w=1920&ssl=1";
-  };
 
   return (
     <div>
