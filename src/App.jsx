@@ -31,7 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit">
+      <div className="bg-body-img bg-cover bg-no-repeat min-h-screen font-kanit flex flex-col">
         <Header />
         <AppRoutes />
         <Footer />
