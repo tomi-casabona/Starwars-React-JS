@@ -15,6 +15,7 @@ export const StarShipDetail = () => {
   };
 
   return (
+    <div>
     <div className="bg-detail bg-cover bg-center bg-no-repeat w-full flex-1">
       <div className="w-11/12 mx-auto">
         <h2 className="my-10 font-orbitron p-3 uppercase border-t border-b border-gray-500 text-white text-2xl">
@@ -57,6 +58,7 @@ export const StarShipDetail = () => {
           </div>
         </div>
       </div>
+    </div>
       {/* mapear pilots */}
       <div className="w-11/12 mx-auto">
         <h2 className="my-10 font-orbitron p-3 uppercase border-t border-b border-gray-500 text-white text-2xl">
@@ -64,6 +66,6 @@ export const StarShipDetail = () => {
         </h2>
         <ListPilots pilots={starship.pilots} />
       </div>
-    </div>
+      </div>
   );
 };

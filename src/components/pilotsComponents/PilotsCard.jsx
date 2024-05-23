@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchPilotInfo } from "../../helpers/fetchPilotInfo";
 import { getPilotIdFromURL } from "../../helpers/getPilotIdFromURL";
 
-export const PilotsCard = ({ pilotItemURL} ) => {
+export const PilotsCard = ({ pilotItemURL }) => {
   const [pilot, setPilot] = useState(null);
   const [error, setError] = useState(null);
 
@@ -26,7 +26,7 @@ export const PilotsCard = ({ pilotItemURL} ) => {
   if (!pilot) {
     return <div>Loading...</div>;
   }
-  console.log(pilot)
+  console.log(pilot);
 
   const id = getPilotIdFromURL(pilot.url);
   const pilotImageURL = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
@@ -38,23 +38,25 @@ export const PilotsCard = ({ pilotItemURL} ) => {
   };
 
   return (
-    <div className="w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105">
-      <div className="rounded-lg overflow-hidden">
-        <div className="h-60 w-full">
-          <img
-            className="w-full h-full object-cover object-center"
-            src={pilotImageURL}
-            onError={handleImageError}
-            alt={pilot.name}
-          />
-        </div>
-        <div className="px-4 font-orbitron font-bold text-xl text-zinc-50 mt-5">
-          {pilot.name}
-        </div>
-        <div className="px-4 font-normal text-lg text-zinc-600 mb-5">
-          height: {pilot.height}
+    <>
+      <div className="w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105">
+        <div className="rounded-lg overflow-hidden">
+          <div className="h-full w-auto">
+            <img
+              className="w-full h-full object-cover object-center"
+              src={pilotImageURL}
+              onError={handleImageError}
+              alt={pilot.name}
+            />
+          </div>
+          <div className="px-4 font-orbitron font-bold text-xl text-zinc-50 mt-5">
+            {pilot.name}
+          </div>
+          <div className="px-4 font-normal text-lg text-zinc-600 mb-5">
+            height: {pilot.height}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
