@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+  import { useLocation } from "react-router-dom";
 import { getIdFromURL } from "../../helpers/getIdFromURL";
 
 export const StarShipDetail = () => {
@@ -30,6 +30,11 @@ export const StarShipDetail = () => {
             </ul>
           </div>
         </div>
+      </div>
+      {/*  */}
+      <div className="w-11/12 mx-auto">
+        <h2 className="my-10 font-orbitron p-3 uppercase border-t border-b border-gray-500 text-white text-2xl">Pilots</h2>
+        
       </div>
     </div>
   );
