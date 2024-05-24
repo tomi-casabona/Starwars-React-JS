@@ -14,7 +14,6 @@ export const LoggedIn = () => {
   }, [url]);
 
   const viewMore = () => {
-    console.log(data)
     if (data.next) {
       setUrl(data.next);
     }
