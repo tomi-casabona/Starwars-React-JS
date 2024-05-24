@@ -7,10 +7,9 @@ import { useSelector } from 'react-redux';
 export const Header = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const user = useSelector((state) => state.user);
-  console.log(user);
   const navigate = useNavigate();
   const auth = getAuth(appFirebase);
-
+  
   const handleSignOut = () => {
     signOut(auth);
     navigate('/');

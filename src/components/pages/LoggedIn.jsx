@@ -1,57 +1,44 @@
-import { fetchStarships } from '../../helpers/fetchStarships';
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { ListStarships } from '../shipsComponents/ListStarships';
+import { fetchStarshipData } from '../../redux/slices/starshipDataSlice';
 
 export const LoggedIn = () => {
   const [url, setUrl] = useState('https://swapi.dev/api/starships/?page=1');
-  const [starshipsObject, setStarshipsObject] = useState(null);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const { data, status, error } = useSelector((state) => state.starshipData)
 
   useEffect(() => {
-    const getStarships = async () => {
-      try {
-        const starshipsData = await fetchStarships(url);
-        if (starshipsObject) {
-          const starshipsAux = {
-            ...starshipsData,
-            results: [...starshipsObject.results, ...starshipsData.results],
-          };
-          setStarshipsObject(starshipsAux);
-        } else {
-          setStarshipsObject(starshipsData);
-        }
-      } catch (error) {
-        setError(error);
-      }
-    };
-
-    getStarships();
+    dispatch(fetchStarshipData(url));
   }, [url]);
 
   const viewMore = () => {
-    if (starshipsObject.next) {
-      setError(null);
-      setUrl(starshipsObject.next);
+    console.log(data)
+    if (data.next) {
+      setUrl(data.next);
     }
   };
+
+  if (status === 'failed') {
+    return <div className='text-center text-2xl my-6'>Error: {error}</div>
+  }
 
   return (
     <>
       <div className="w-full sm:w-1/2 mx-auto flex-1">
-        {starshipsObject && (
+        {data && (
           <InfiniteScroll
-            dataLength={starshipsObject.results.length}
+            dataLength={data.results.length}
             next={viewMore}
-            hasMore={starshipsObject.next}
+            hasMore={data.next}
             loader={<div className="text-center text-2xl my-6">Loading...</div>}
             className="grid-flow-row grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid gap-2 p-3 overflow-visible"
           >
-            <ListStarships starshipsObject={starshipsObject} />
+            <ListStarships />
           </InfiniteScroll>
         )}
       </div>
-      {error && <div>Error: {error.message}</div>}
     </>
   );
 };
