@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { getIdFromURL } from "../../helpers/getIdFromURL";
 import { handleImageError } from "../../utils/handleImageError";
-import { ListPilots } from "../pilotsComponents/ListPilots";
+import { Pilots } from "../pilotsComponents/Pilots";
 
 export const StarShipDetail = () => {
   const location = useLocation();
@@ -54,13 +54,7 @@ export const StarShipDetail = () => {
           </div>
         </div>
       </div>
-      {/* mapear pilots */}
-      <div className="w-11/12 mx-auto">
-        <h2 className="my-10 font-orbitron p-3 uppercase border-t border-b border-gray-500 text-white text-2xl">
-          Pilots
-        </h2>
-        <ListPilots pilots={starship.pilots} />
-      </div>
+      {starship.pilots.length > 0 && <Pilots starship={starship} />}
     </div>
   );
 };
