@@ -3,9 +3,8 @@ import { Home } from "../components/pages/Home";
 import { Login } from "../components/pages/Login";
 import { SignIn } from "../components/pages/SignIn";
 import { ProtectedRoute } from "../utils/ProtectedRoute";
-import { LoggedIn } from "../components/pages/LoggedIn";
+import { StarShips } from "../components/pages/StarShips";
 import { StarShipDetail } from "../components/shipsComponents/StarshipDetail";
-import { Prueba } from "../components/pages/Prueba";
 import { useSelector } from "react-redux";
 
 export const AppRoutes = () => {
@@ -17,9 +16,8 @@ export const AppRoutes = () => {
       <Route path="/logIn" element={<Login />} />
       <Route path="/signIn" element={<SignIn />} />
       <Route element={<ProtectedRoute isAuthorized={isLogged} />}>
-        <Route path="/loggedIn" element={<LoggedIn />} />
+        <Route path="/starships" element={<StarShips />} />
         <Route path="/starshipDetail" element={<StarShipDetail />} />
-        <Route path="/prueba" element={<Prueba />} />
       </Route>
     </Routes>
   );

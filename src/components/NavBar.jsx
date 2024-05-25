@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const NavBar = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
@@ -10,7 +10,7 @@ export const NavBar = () => {
         to="/"
         className={({ isActive }) =>
           `hover:text-white uppercase py-2 px-4 border-e border-s border-b border-gray-500 ${
-            isActive ? 'border-b-blue-500 border' : 'border-b-transparent'
+            isActive ? "border-b-blue-500 border" : "border-b-transparent"
           }`
         }
       >
@@ -18,10 +18,10 @@ export const NavBar = () => {
       </NavLink>
       {isLogged && (
         <NavLink
-          to="/loggedIn"
+          to="/StarShips"
           className={({ isActive }) =>
             `hover:text-white uppercase py-2 px-4 border-e border-s border-b border-gray-500 ${
-              isActive ? 'border-b-blue-500 border' : 'border-b-transparent'
+              isActive ? "border-b-blue-500 border" : "border-b-transparent"
             }`
           }
         >

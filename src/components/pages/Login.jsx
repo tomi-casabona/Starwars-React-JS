@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { appFirebase } from '../../firebase/firebase-config';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { appFirebase } from "../../firebase/firebase-config";
+import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(appFirebase);
 
 export const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
@@ -16,10 +16,7 @@ export const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/loggedIn');
-      // El usuario ha iniciado sesión exitosamente
-      // TODO : cambiar estado general a logeado
-      // TODO: Si el usuario está loggeado, redirigir a Starships
+      navigate("/StarShip");
     } catch (error) {
       setError(error.message);
     }
@@ -54,7 +51,7 @@ export const Login = () => {
           Starships from the movie.
         </p>
         <p className="font-normal text-gray-500">
-          You don't have an account?{' '}
+          You don't have an account?{" "}
           <a
             href="/signIn"
             className="underline hover:no-underline text-gray-700"
@@ -75,7 +72,7 @@ export const Login = () => {
             <label
               htmlFor="email"
               className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${
-                email ? 'top-1 text-xs' : 'top-5'
+                email ? "top-1 text-xs" : "top-5"
               }`}
             >
               Email
@@ -92,7 +89,7 @@ export const Login = () => {
             <label
               htmlFor="password"
               className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${
-                password ? 'top-1 text-xs' : 'top-5'
+                password ? "top-1 text-xs" : "top-5"
               }`}
             >
               Password
@@ -111,7 +108,7 @@ export const Login = () => {
             Star Wars Catalog was developed with Swapi API.
           </h3>
           <p className="font-sans text-sm">
-            You can use this API heading to{' '}
+            You can use this API heading to{" "}
             <a className="underline" href="https://swapi.dev/api/starships/">
               Swapi Website
             </a>
