@@ -26,7 +26,6 @@ export const PilotsCard = ({ pilotItemURL }) => {
   if (!pilot) {
     return <div>Loading...</div>;
   }
-  console.log(pilot);
 
   const id = getPilotIdFromURL(pilot.url);
   const pilotImageURL = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
@@ -49,11 +48,11 @@ export const PilotsCard = ({ pilotItemURL }) => {
               alt={pilot.name}
             />
           </div>
-          <div className="px-4 font-orbitron font-bold text-xl text-zinc-50 mt-5">
-            {pilot.name}
+          <div className="px-4 font-orbitron font-bold text-lg pt-4 text-zinc-600 mb-5 border-t-4 border-red-400 ">
+            {pilot.name.toUpperCase()}
           </div>
-          <div className="px-4 font-normal text-lg text-zinc-600 mb-5">
-            height: {pilot.height}
+          <div className="px-4 font-orbitron text-sm text-zinc-600 mb-5">
+            Height: {pilot.height} kg.
           </div>
         </div>
       </div>
