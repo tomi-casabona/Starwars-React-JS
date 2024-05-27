@@ -16,7 +16,7 @@ export const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/StarShip");
+      navigate("/StarShips");
     } catch (error) {
       setError(error.message);
     }
