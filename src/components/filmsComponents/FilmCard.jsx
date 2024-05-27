@@ -10,7 +10,6 @@ export const FilmCard = ({ filmItemURL }) => {
     const fetchFilmData = async () => {
       try {
         const data = await fetchFilmInfo(filmItemURL);
-        console.log(data);
         setFilm(data);
       } catch (error) {
         setError(error);
