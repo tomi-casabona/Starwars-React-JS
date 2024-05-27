@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
-import { fetchPilotInfo } from "../../helpers/fetchPilotInfo";
+//import { fetchPilotInfo } from "../../helpers/fetchPilotInfo";
 import { getPilotIdFromURL } from "../../helpers/getPilotIdFromURL";
+import { fetchPilot } from '../../redux/slices/pilotsSlice';
+import { useDispatch } from "react-redux";
+
 
 export const PilotsCard = ({ pilotItemURL }) => {
   const [pilot, setPilot] = useState(null);
   const [error, setError] = useState(null);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchPilotData = async () => {
       try {
-        const data = await fetchPilotInfo(pilotItemURL);
-        setPilot(data);
+        const data = await dispatch(fetchPilot(pilotItemURL));
+        setPilot(data.payload);
       } catch (error) {
         setError(error);
       }
@@ -26,7 +31,7 @@ export const PilotsCard = ({ pilotItemURL }) => {
   if (!pilot) {
     return <div>Loading...</div>;
   }
-
+console.log(pilot)
   const id = getPilotIdFromURL(pilot.url);
   const pilotImageURL = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
 
