@@ -6,23 +6,25 @@ import { useNavigate } from "react-router-dom";
 const auth = getAuth(appFirebase);
 
 export const Login = () => {
-  
-  // const navigate = useNavigate();
-  const {register, handleSubmit} = useForm();
+   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-  const onSubmit = (data) => {
-    //navigate("/StarShips");
-    console.log(data)
-  }
+  const onSubmit = async (data) => {
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await signInWithEmailAndPassword(auth, email, password);
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // };
+    try {
+      const { email, password } = data;
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/StarShips");
+
+    } catch (error) {
+      setError("root", { message: error.message });
+    }
+  };
 
   return (
     <div className="flex-1 bg-login bg-cover bg-no-repeat">
@@ -62,15 +64,25 @@ export const Login = () => {
           </a>
           !
         </p>
-        <form className="my-3 form-control gap-3" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="my-3 form-control gap-3"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
           <div className="relative rounded-xl overflow-hidden">
             <input
-            {...register("email")}
+              {...register("email", {
+                required: "Example structure for email: username@email.com",
+                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              })}
               className="autofill:bg-gray-300 w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black "
               type="email"
-              id="email"   
-              placeholder="email"   
+              id="email"
+              placeholder="ExapleUser@gmail.com"
             />
+            {errors.email && (
+              <div className="text-red-500"> {errors.email.message} </div>
+            )}
             <label
               htmlFor="email"
               className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans 
@@ -82,11 +94,21 @@ export const Login = () => {
           </div>
           <div className="relative rounded-xl overflow-hidden">
             <input
-            {...register("password")}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 10,
+                  message: "password must have at least 10 characters",
+                },
+              })}
               className="w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black"
               type="password"
               id="password"
-               />
+              placeholder="*******"
+            />
+            {errors.password && (
+              <div className="text-red-500"> {errors.password.message} </div>
+            )}
             <label
               htmlFor="password"
               className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans 
@@ -99,9 +121,13 @@ export const Login = () => {
           <button
             className="bg-yellow-300 rounded-full p-4 text-zinc-900 hover:bg-yellow-400 duration-200"
             type="submit"
+            disabled={isSubmitting}
           >
-            Continue
+            {isSubmitting ? "Loading..." : "Continue"}
           </button>
+          {errors.root && (
+            <div className="text-red-500"> {errors.root.message} </div>
+          )}
         </form>
         {/* {error && <p className="font-sans">{error}</p>} */}
         <div className="border-t my-2 text-zinc-700">
