@@ -45,7 +45,7 @@ export const FilmCard = ({ filmItemURL }) => {
 
   return (
     <>
-      <li className="relative w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105 flex flex-col justify-between">
+      <li className="relative w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105 flex flex-col justify-between overflow-hidden">
         <img
           className="w-full h-auto object-cover object-center"
           src={filmImageURL}
