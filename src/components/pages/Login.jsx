@@ -97,8 +97,8 @@ export const Login = () => {
               {...register("password", {
                 required: "Password is required",
                 minLength: {
-                  value: 10,
-                  message: "password must have at least 10 characters",
+                  value: 7,
+                  message: "password must have at least 7 characters",
                 },
               })}
               className="w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black"
