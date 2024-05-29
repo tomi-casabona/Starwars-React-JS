@@ -27,7 +27,7 @@ export const FilmCard = ({ filmItemURL }) => {
   }, [filmItemURL]);
 
   if (error) {
-    return <li>May de force be with you - Error fetching Film data.</li>;
+    return <li>May the force be with you - Error fetching Film data.</li>;
   }
 
   if (!film) {
