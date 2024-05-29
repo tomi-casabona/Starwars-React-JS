@@ -45,24 +45,23 @@ export const FilmCard = ({ filmItemURL }) => {
 
   return (
     <>
-      <li className="w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105">
-        <div className="rounded-lg overflow-hidden">
-          <div className="h-full w-auto">
-            <img
-              className="w-full h-full object-cover object-center"
-              src={filmImageURL}
-              onError={handleImageError}
-              alt={film.name}
-            />
-          </div>
-          <div className="px-4 font-orbitron font-bold text-lg pt-4 text-zinc-400 mb-5 border-t-4 border-red-400 ">
+      <li className="relative w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105 flex flex-col justify-between overflow-hidden">
+        <img
+          className="w-full h-auto object-cover object-center"
+          src={filmImageURL}
+          onError={handleImageError}
+          alt={film.name}
+        />
+        <div className="flex-grow">
+          <div className="px-4 font-orbitron font-bold text-lg pt-4 text-zinc-400 mb-5 border-t-4 border-red-400">
             {film.title.toUpperCase()}
           </div>
-          <div className="px-4 font-orbitron text-sm text-zinc-600 mb-5">
-            Episode {film.episode_id}
-          </div>
+        </div>
+        <div className="px-4 font-orbitron text-sm text-zinc-600 mb-5">
+          Episode {film.episode_id}
         </div>
       </li>
+
     </>
   );
 };
