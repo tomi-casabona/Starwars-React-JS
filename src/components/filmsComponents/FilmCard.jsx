@@ -14,6 +14,9 @@ export const FilmCard = ({ filmItemURL }) => {
     const fetchFilmData = async () => {
       try {
         const data = await dispatch(fetchFilm(filmItemURL));
+        if (!data.payload) {
+          throw new Error("Network response was not ok");
+        }
         setFilm(data.payload);
       } catch (error) {
         setError(error);
@@ -24,11 +27,11 @@ export const FilmCard = ({ filmItemURL }) => {
   }, [filmItemURL]);
 
   if (error) {
-    return <div>May de force be with you - Error fetching Film data.</div>;
+    return <li>May the force be with you - Error fetching Film data.</li>;
   }
 
   if (!film) {
-    return <div>Loading...</div>;
+    return <li>Loading...</li>;
   }
 
   const id = getFilmIdFromURL(film.url);
@@ -42,7 +45,7 @@ export const FilmCard = ({ filmItemURL }) => {
 
   return (
     <>
-      <div className="w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105">
+      <li className="w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105">
         <div className="rounded-lg overflow-hidden">
           <div className="h-full w-auto">
             <img
@@ -59,7 +62,7 @@ export const FilmCard = ({ filmItemURL }) => {
             Episode {film.episode_id}
           </div>
         </div>
-      </div>
+      </li>
     </>
   );
 };
