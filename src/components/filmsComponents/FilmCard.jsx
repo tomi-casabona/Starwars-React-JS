@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { getFilmIdFromURL } from "../../helpers/getFilmIdFromURL";
-import { fetchFilmInfo } from "../../helpers/fetchFilmInfo";
+import { useDispatch } from "react-redux";
+import { fetchFilm } from "../../redux/slices/filmsSlice";
+//import { fetchFilmInfo } from "../../helpers/fetchFilmInfo";
 
 export const FilmCard = ({ filmItemURL }) => {
   const [film, setFilm] = useState(null);
   const [error, setError] = useState(null);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchFilmData = async () => {
       try {
-        const data = await fetchFilmInfo(filmItemURL);
-        setFilm(data);
+        const data = await dispatch(fetchFilm(filmItemURL));
+        setFilm(data.payload);
       } catch (error) {
         setError(error);
       }

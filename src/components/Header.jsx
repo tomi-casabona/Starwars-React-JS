@@ -1,18 +1,18 @@
-import { getAuth, signOut } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import { appFirebase } from '../firebase/firebase-config';
-import { NavBar } from './NavBar';
-import { useSelector } from 'react-redux';
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { appFirebase } from "../firebase/firebase-config";
+import { NavBar } from "./NavBar";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const auth = getAuth(appFirebase);
-  
+
   const handleSignOut = () => {
     signOut(auth);
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -63,34 +63,37 @@ export const Header = () => {
           </ul>
           <div
             className="w-full lg:w-2/4 lg:h-full flex items-center"
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
           >
             <div className="h-[32px] w-[312px] lg:h-[80px] lg:w-[184px] mx-auto bg-cover bg-no-repeat bg-center cursor-pointer bg-logo-line lg:bg-logo-block"></div>
           </div>
           <div className="lg:w-1/4 flex justify-center">
             {isLogged ? (
               <>
-                <div className="dropdown dropdown-end">
+                <div className="dropdown dropdown-right">
                   <div
                     tabIndex={0}
                     role="button"
                     className="btn btn-ghost btn-circle avatar"
                   >
-                    <div className="w-10 rounded-full bg-slate-50">
-                      <img src='https://cdn-icons-png.flaticon.com/512/149/149071.png'/>
+                    <div className="w-10 rounded-full  border-4 border-green-500 ">
+                      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
                     </div>
                   </div>
                   <ul
                     tabIndex={0}
-                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content border-4 border-green-500  bg-gray-200 text-black rounded-box w-52"
                   >
-                    <li className="p-3 text-wrap">
+                    <li className="p-3 text-wrap text-blue">
                       Logged In As:
                       <br />
                       {user.email}
                     </li>
                     <li>
-                      <a className="p-3" onClick={handleSignOut}>
+                      <a
+                        className="m-4 hover:bg-red-200  "
+                        onClick={handleSignOut}
+                      >
                         <img src="/src/assets/logout.png" />
                         Logout
                       </a>
@@ -102,7 +105,7 @@ export const Header = () => {
               <>
                 <button
                   className="text-nowrap flex items-center gap-2 px-2 py-1 mx-3 hover:[text-shadow:#FFF_1px_0_10px;] uppercase font-sans font-bold"
-                  onClick={() => navigate('/logIn')}
+                  onClick={() => navigate("/logIn")}
                 >
                   <img
                     className="inline"
