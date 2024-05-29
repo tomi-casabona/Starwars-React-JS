@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const auth = getAuth(appFirebase);
 
 export const Login = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -15,12 +15,10 @@ export const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-
     try {
       const { email, password } = data;
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/StarShips");
-
     } catch (error) {
       setError("root", { message: error.message });
     }
@@ -75,7 +73,7 @@ export const Login = () => {
                 required: "Example structure for email: username@email.com",
                 pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
               })}
-              className="autofill:bg-gray-300 w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black "
+              className="autofill:bg-gray-300 w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black focus:text-lg hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black "
               type="email"
               id="email"
               placeholder="ExapleUser@gmail.com"
@@ -101,7 +99,7 @@ export const Login = () => {
                   message: "password must have at least 7 characters",
                 },
               })}
-              className="w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black"
+              className="w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:text-lg focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black"
               type="password"
               id="password"
               placeholder="*******"
