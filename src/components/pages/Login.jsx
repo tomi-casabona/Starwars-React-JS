@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { appFirebase } from "../../firebase/firebase-config";
 import { useNavigate } from "react-router-dom";
@@ -6,19 +6,23 @@ import { useNavigate } from "react-router-dom";
 const auth = getAuth(appFirebase);
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-  const navigate = useNavigate();
+  const onSubmit = async (data) => {
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
     try {
+      const { email, password } = data;
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/StarShips");
+
     } catch (error) {
-      setError(error.message);
+      setError("root", { message: error.message });
     }
   };
 
@@ -60,19 +64,29 @@ export const Login = () => {
           </a>
           !
         </p>
-        <form className="my-3 form-control gap-3" onSubmit={handleLogin}>
+        <form
+          className="my-3 form-control gap-3"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
           <div className="relative rounded-xl overflow-hidden">
             <input
+              {...register("email", {
+                required: "Example structure for email: username@email.com",
+                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              })}
               className="autofill:bg-gray-300 w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black "
               type="email"
               id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="ExapleUser@gmail.com"
             />
+            {errors.email && (
+              <div className="text-red-500"> {errors.email.message} </div>
+            )}
             <label
               htmlFor="email"
-              className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${
-                email ? "top-1 text-xs" : "top-5"
+              className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans 
+               
               }`}
             >
               Email
@@ -80,17 +94,26 @@ export const Login = () => {
           </div>
           <div className="relative rounded-xl overflow-hidden">
             <input
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 10,
+                  message: "password must have at least 10 characters",
+                },
+              })}
               className="w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black"
               type="password"
               id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder="*******"
             />
+            {errors.password && (
+              <div className="text-red-500"> {errors.password.message} </div>
+            )}
             <label
               htmlFor="password"
-              className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans ${
-                password ? "top-1 text-xs" : "top-5"
-              }`}
+              className={`text-gray-500 absolute left-4 cursor-text peer-focus:text-xs peer-focus:top-1 duration-100 font-sans 
+             
+              `}
             >
               Password
             </label>
@@ -98,11 +121,15 @@ export const Login = () => {
           <button
             className="bg-yellow-300 rounded-full p-4 text-zinc-900 hover:bg-yellow-400 duration-200"
             type="submit"
+            disabled={isSubmitting}
           >
-            Continue
+            {isSubmitting ? "Loading..." : "Continue"}
           </button>
+          {errors.root && (
+            <div className="text-red-500"> {errors.root.message} </div>
+          )}
         </form>
-        {error && <p className="font-sans">{error}</p>}
+        {/* {error && <p className="font-sans">{error}</p>} */}
         <div className="border-t my-2 text-zinc-700">
           <h3 className="font-sans font-bold mt-3">
             Star Wars Catalog was developed with Swapi API.
