@@ -32,13 +32,16 @@ export const FormLogin = () => {
       <div className="relative rounded-xl overflow-hidden">
         <input
           {...register("email", {
-            required: "Example structure for email: username@email.com",
-            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            required: "Email is required",
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Example structure for email: username@email.com",
+            },
           })}
-          className="autofill:bg-gray-300 w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black focus:text-lg hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black "
+          className="autofill:bg-gray-300 w-full pt-6 pb-3 px-4 bg-gray-200 font-sans focus:outline-none focus:border-b-black focus:text-lg hover:border-b-gray-500 border-b-2 duration-100 transition-colors peer text-black"
           type="email"
           id="email"
-          placeholder="ExapleUser@gmail.com"
+          placeholder="ExampleUser@gmail.com"
         />
         {errors.email && (
           <div className="text-red-500 p-2"> {errors.email.message} </div>
