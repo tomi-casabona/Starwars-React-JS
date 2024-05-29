@@ -14,6 +14,9 @@ export const FilmCard = ({ filmItemURL }) => {
     const fetchFilmData = async () => {
       try {
         const data = await dispatch(fetchFilm(filmItemURL));
+        if (!data.payload) {
+          throw new Error("Network response was not ok");
+        }
         setFilm(data.payload);
       } catch (error) {
         setError(error);
