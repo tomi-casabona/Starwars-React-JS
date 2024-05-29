@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <>
       <header className="bg-black bg-opacity-75">
-        <div className="w-3/4 flex lg:flex-row flex-col gap-3 justify-center items-center bg-transparent text-white lg:h-36 mx-auto mb-5 pt-10 lg:my-0">
+        <div className="w-3/4 flex lg:flex-row flex-col gap-3 justify-center items-center bg-transparent text-white lg:h-36 mx-auto mb-5 mt-10 lg:mt-5">
           <ul className="hidden lg:flex w-1/4 p-4 gap-4">
             <li className="w-6 hover:scale-110 opacity-75 hover:opacity-100">
               <a target="_blank" href="https://www.tiktok.com/@starwars">
