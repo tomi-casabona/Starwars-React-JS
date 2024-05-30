@@ -5,7 +5,7 @@ export const NavBar = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
 
   return (
-    <div className="flex justify-center items-center p-0 border-b-[1px] border-t-[1px] border-gray-500">
+    <nav className="flex justify-center items-center p-0 border-b-[1px] border-t-[1px] border-gray-500">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -28,6 +28,6 @@ export const NavBar = () => {
           Starships
         </NavLink>
       )}
-    </div>
+    </nav>
   );
 };
