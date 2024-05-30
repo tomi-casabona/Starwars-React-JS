@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { appFirebase } from "../firebase/firebase-config";
+import { appFirebase } from "../../firebase/firebase-config";
 import { useNavigate } from "react-router-dom";
 
 export const FormLogin = () => {

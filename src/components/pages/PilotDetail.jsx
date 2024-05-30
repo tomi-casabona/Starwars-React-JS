@@ -1,14 +1,14 @@
 import { useLocation } from "react-router-dom";
-import { getIdFromURL } from "../../helpers/shipHelpers/getIdFromURL";
 import { handleImageError } from "../../helpers/handleImageError";
-import { Pilots } from "../pilotsComponents/Pilots";
-import { Films } from "../filmsComponents/Films";
-
-export const StarShipDetail = () => {
+import { getPilotIdFromURL } from "../../helpers/pilotHelpers/getPilotIdFromURL";
+import { fetchPilotInfo } from "../../helpers/pilotHelpers/fetchPilotInfo";
+export const PilotDetail = () => {
   const location = useLocation();
-  const { starship } = location.state || {};
-  const id = getIdFromURL(starship.url);
-  const starshipURL = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
+  const { pilot } = location.state || {}; // Recupera el estado del piloto
+  const id = getPilotIdFromURL(pilot.url);
+  const pilotImageURL = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+
+  const specie = pilot.specie ? fetchPilotInfo(pilot.specie) : "";
 
   return (
     <div>
@@ -21,55 +21,37 @@ export const StarShipDetail = () => {
             <div className="w-full lg:w-1/3 overflow-hidden">
               <img
                 className="w-full h-full object-cover object-center"
-                src={starshipURL}
+                src={pilotImageURL}
                 onError={handleImageError}
               />
             </div>
             <div className="w-full lg:w-2/3 bg-zinc-950 bg-opacity-50 lg:border-s-4 border-s-red-400 p-4 font-orbitron">
               <h3 className="text-2xl  text-gray-200 font-bold uppercase my-3">
-                {starship.name ? starship.name : "Name is not found"}
+                {pilot.name ? pilot.name : "Name is not found"}
               </h3>
               <ul className="text-xl my-5">
                 <li className="p-3">
-                  Model:{" "}
+                  Height:{" "}
                   <span className=" text-gray-400 uppercase">
-                    {starship.model}
+                    {pilot.height}
                   </span>
                 </li>
                 <li className="p-3">
-                  Credit cost:{" "}
+                  Mass:{" "}
                   <span className=" text-gray-400 uppercase">
-                    ${starship.cost_in_credits}
+                    {pilot.mass}kg
                   </span>
                 </li>
                 <li className="p-3">
-                  Manufacturer:{" "}
+                  Gender:{" "}
                   <span className="text-gray-400  uppercase">
-                    {starship.manufacturer
-                      ? starship.manufacturer
-                      : "Unknow manofacturer"}
+                    {pilot.gender}
                   </span>
                 </li>
-                <li className="p-3">
-                  Passengers:{" "}
-                  <span className="text-gray-400  uppercase">
-                    {starship.passengers}
-                  </span>
-                </li>
-                {starship.max_atmosphering_speed && (
+                {specie && (
                   <li className="p-3">
-                    Atmosphering Speed:{" "}
-                    <span className="text-gray-400  uppercase">
-                      {starship.max_atmosphering_speed}
-                    </span>
-                  </li>
-                )}
-                {starship.hyperdrive_rating && (
-                  <li className="p-3">
-                    Hyperdrive rating:{" "}
-                    <span className="text-gray-400  uppercase">
-                      {starship.hyperdrive_rating}
-                    </span>
+                    Species:
+                    <span className="text-gray-400  uppercase">{specie} </span>
                   </li>
                 )}
               </ul>
@@ -77,8 +59,6 @@ export const StarShipDetail = () => {
           </div>
         </div>
       </div>
-      {starship.pilots.length > 0 && <Pilots starship={starship} />}
-      <Films starship={starship} />
     </div>
   );
 };

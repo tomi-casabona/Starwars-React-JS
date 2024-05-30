@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Pilots } from "../components/pilotsComponents/Pilots";
+import { Pilots } from "./Pilots";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";    
-import userReducer from "../redux/slices/userSlice";
+import userReducer from "../../redux/slices/userSlice";
 import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
-import starshipReducer from "../redux/slices/starshipDataSlice";
+import starshipReducer from "../../redux/slices/starshipDataSlice";
 
 const starship = {
   name: "Millennium Falcon",

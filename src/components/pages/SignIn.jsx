@@ -1,4 +1,4 @@
-import { FormSignIn } from "../FormSignIn";
+import { FormSignIn } from "../serviceComponents/FormSignIn";
 
 export const SignIn = () => {
   return (

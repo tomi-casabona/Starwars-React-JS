@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchStarships } from "../../helpers/fetchStarships";
+import { fetchStarships } from "../../helpers/shipHelpers/fetchStarships";
 
 export const fetchStarshipData = createAsyncThunk(
     "starshipDataSlice/fetchStarshipData",

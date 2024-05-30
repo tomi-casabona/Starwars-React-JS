@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { getIdFromURL } from '../../helpers/getIdFromURL';
-import { handleImageError } from '../../utils/handleImageError';
+import { useNavigate } from "react-router-dom";
+import { getIdFromURL } from "../../helpers/shipHelpers/getIdFromURL";
+import { handleImageError } from "../../helpers/handleImageError";
 
 export const StarshipCard = ({ starship }) => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export const StarshipCard = ({ starship }) => {
   return (
     <div
       className="w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105"
-      onClick={() => navigate('/starshipDetail', { state: { starship } })}
+      onClick={() => navigate("/starshipDetail", { state: { starship } })}
     >
       <div className="rounded-lg overflow-hidden">
         <div className="h-60 w-full">

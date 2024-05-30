@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { appFirebase } from "../firebase/firebase-config";
+import { appFirebase } from "../../firebase/firebase-config";
 import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(appFirebase);

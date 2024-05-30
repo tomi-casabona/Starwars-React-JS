@@ -1,6 +1,6 @@
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { appFirebase } from "../firebase/firebase-config";
+import { appFirebase } from "../../firebase/firebase-config";
 import { NavBar } from "./NavBar";
 import { useSelector } from "react-redux";
 

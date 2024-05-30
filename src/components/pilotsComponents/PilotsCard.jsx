@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { getPilotIdFromURL } from "../../helpers/getPilotIdFromURL";
-import { fetchPilot } from "../../redux/slices/pilotsSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchPilot } from "../../redux/slices/pilotsSlice";
+import { getPilotIdFromURL } from "../../helpers/pilotHelpers/getPilotIdFromURL";
 
 export const PilotsCard = ({ pilotItemURL }) => {
   const [pilot, setPilot] = useState(null);
   const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchPilotData = async () => {
       try {
@@ -47,8 +49,14 @@ export const PilotsCard = ({ pilotItemURL }) => {
       "https://i0.wp.com/teamsbackground.net/wp-content/uploads/2020/04/star-wars-backgrounds-38.jpg?w=1920&ssl=1";
   };
 
+  const handleClick = () => {
+    navigate("/pilot", { state: { pilot } });
+  };
   return (
-    <div className="w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105">
+    <div
+      onClick={handleClick}
+      className="w-full h-auto mx-auto my-3 rounded-xl bg-zinc-950 cursor-pointer hover:bg-zinc-900 duration-500 hover:scale-105"
+    >
       <div className="rounded-lg overflow-hidden">
         <div className="h-full w-auto">
           <img

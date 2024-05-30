@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { PilotsCard } from "../components/pilotsComponents/PilotsCard";
+import { PilotsCard } from "./PilotsCard";
 import { Provider } from "react-redux";
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
-import { store } from "../redux/store";
+import { store } from "../../redux/store";
 
 const mockPilot = {
   name: "Luke Skywalker",

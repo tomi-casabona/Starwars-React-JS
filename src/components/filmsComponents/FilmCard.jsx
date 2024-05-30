@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getFilmIdFromURL } from "../../helpers/getFilmIdFromURL";
+import { getFilmIdFromURL } from "../../helpers/filmHelpers/getFilmIdFromURL";
 import { useDispatch } from "react-redux";
 import { fetchFilm } from "../../redux/slices/filmsSlice";
 //import { fetchFilmInfo } from "../../helpers/fetchFilmInfo";

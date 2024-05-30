@@ -1,4 +1,4 @@
-import { FormLogin } from "../FormLogin";
+import { FormLogin } from "../serviceComponents/FormLogin";
 
 export const Login = () => {
   return (

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchPilotInfo } from "../../helpers/fetchPilotInfo";
+import { fetchPilotInfo } from "../../helpers/pilotHelpers/fetchPilotInfo";
 
 export const fetchPilot = createAsyncThunk(
   "pilotsSlice/fetchPilot",
