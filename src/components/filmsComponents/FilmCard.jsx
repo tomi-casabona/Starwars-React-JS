@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFilmIdFromURL } from "../../helpers/filmHelpers/getFilmIdFromURL";
-import { fetchFilmInfo } from "../../helpers/fetchFilmInfo";
-
+import { fetchFilmInfo } from "../../helpers/filmHelpers/fetchFilmInfo";
 export const FilmCard = ({ filmItemURL }) => {
   const [film, setFilm] = useState(null);
   const [error, setError] = useState(null);
@@ -54,7 +53,6 @@ export const FilmCard = ({ filmItemURL }) => {
           Episode {film.episode_id}
         </div>
       </li>
-
     </>
   );
 };
