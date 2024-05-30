@@ -15,9 +15,6 @@ export const PilotsCard = ({ pilotItemURL }) => {
     const fetchPilotData = async () => {
       try {
         const data = await dispatch(fetchPilot(pilotItemURL));
-        if (!data.payload) {
-          throw new Error("Network response was not ok");
-        }
         setPilot(data.payload);
       } catch (error) {
         setError(error);
@@ -28,18 +25,13 @@ export const PilotsCard = ({ pilotItemURL }) => {
   }, [pilotItemURL]);
 
   if (error) {
-    return (
-      <div>
-        <p>May the force be with you - Error fetching pilot data.</p>
-        <p>{error.message}</p>
-      </div>
-    );
+    return <div>May de force be with you - Error fetching pilot data.</div>;
   }
 
   if (!pilot) {
     return <div>Loading...</div>;
   }
-
+console.log(pilot)
   const id = getPilotIdFromURL(pilot.url);
   const pilotImageURL = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
 

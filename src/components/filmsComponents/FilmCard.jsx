@@ -1,23 +1,16 @@
 import { useEffect, useState } from "react";
 import { getFilmIdFromURL } from "../../helpers/filmHelpers/getFilmIdFromURL";
-import { useDispatch } from "react-redux";
-import { fetchFilm } from "../../redux/slices/filmsSlice";
-//import { fetchFilmInfo } from "../../helpers/fetchFilmInfo";
+import { fetchFilmInfo } from "../../helpers/fetchFilmInfo";
 
 export const FilmCard = ({ filmItemURL }) => {
   const [film, setFilm] = useState(null);
   const [error, setError] = useState(null);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     const fetchFilmData = async () => {
       try {
-        const data = await dispatch(fetchFilm(filmItemURL));
-        if (!data.payload) {
-          throw new Error("Network response was not ok");
-        }
-        setFilm(data.payload);
+        const data = await fetchFilmInfo(filmItemURL);
+        setFilm(data);
       } catch (error) {
         setError(error);
       }
@@ -27,11 +20,11 @@ export const FilmCard = ({ filmItemURL }) => {
   }, [filmItemURL]);
 
   if (error) {
-    return <li>May the force be with you - Error fetching Film data.</li>;
+    return <div>May de force be with you - Error fetching Film data.</div>;
   }
 
   if (!film) {
-    return <li>Loading...</li>;
+    return <div>Loading...</div>;
   }
 
   const id = getFilmIdFromURL(film.url);
