@@ -1,6 +1,9 @@
 import { FormSignIn } from "../serviceComponents/FormSignIn";
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex-1 bg-login bg-cover bg-no-repeat">
       <div className="text-start w-11/12 md:w-1/2 lg:w-1/3 bg-white mx-auto rounded-2xl my-5 p-10">
@@ -31,12 +34,12 @@ export const SignIn = () => {
         </p>
         <p className="font-normal text-gray-500">
           Already have an account?{" "}
-          <a
-            href="/logIn"
+          <button
+            onClick={() => navigate("/LogIn")}
             className="underline hover:no-underline text-gray-700"
           >
-            Log In
-          </a>
+            Login
+          </button>
           !
         </p>
         <FormSignIn />
