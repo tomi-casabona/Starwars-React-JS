@@ -2,20 +2,33 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDa-7Q4WzRXZQCtyMQDgzkHaPSJRYSVAWM",
-  authDomain: "prueba-tomi-casabona.firebaseapp.com",
-  projectId: "prueba-tomi-casabona",
-  storageBucket: "prueba-tomi-casabona.appspot.com",
-  messagingSenderId: "1009356613003",
-  appId: "1:1009356613003:web:328f926991e96a94d37b8e",
-  measurementId: "G-DY8D1YXQV9",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
+
+// Verifica que las variables de entorno estén definidas
+if (
+  !firebaseConfig.apiKey ||
+  !firebaseConfig.authDomain ||
+  !firebaseConfig.projectId ||
+  !firebaseConfig.storageBucket ||
+  !firebaseConfig.messagingSenderId ||
+  !firebaseConfig.appId ||
+  !firebaseConfig.measurementId
+) {
+  console.error(
+    "Firebase configuration is missing one or more environment variables.",
+    firebaseConfig
+  );
+}
 
 // Initialize Firebase
 export const appFirebase = initializeApp(firebaseConfig);
