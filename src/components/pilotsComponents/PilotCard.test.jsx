@@ -30,7 +30,6 @@ const renderWithProviders = (ui, { store }) => {
     <Provider store={store}>
       <MemoryRouter>
         {" "}
-        {/* Envuelve tu componente con MemoryRouter */}
         {ui}
       </MemoryRouter>
     </Provider>
