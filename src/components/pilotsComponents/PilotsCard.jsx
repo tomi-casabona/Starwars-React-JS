@@ -10,28 +10,27 @@ export const PilotsCard = ({ pilotItemURL }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const fetchPilotData = async () => {
       try {
-        const data = await dispatch(fetchPilot(pilotItemURL));
-        setPilot(data.payload);
+        const data = await dispatch(fetchPilot(pilotItemURL)).unwrap();
+        setPilot(data);
       } catch (error) {
         setError(error);
       }
     };
 
     fetchPilotData();
-  }, [pilotItemURL]);
+  }, [pilotItemURL, dispatch]);
 
   if (error) {
-    return <div>May de force be with you - Error fetching pilot data.</div>;
+    return <div>May the force be with you - Error fetching pilot data.</div>;
   }
 
   if (!pilot) {
     return <div>Loading...</div>;
   }
-console.log(pilot)
   const id = getPilotIdFromURL(pilot.url);
   const pilotImageURL = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
 
