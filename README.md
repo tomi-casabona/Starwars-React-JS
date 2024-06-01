@@ -2,18 +2,18 @@
 
 ![Star Wars Logo](./src/assets/images-md/Header.png)
 
-## Description
+## Description 📃
 
 **Star Wars Wiki** is a web application that provides detailed information about the starships in the Star Wars universe. Built with React, Tailwind CSS, Firebase, and Redux, this app allows users to search and explore data on various starships, with up-to-date information presented in a visually appealing manner.
 
-## Technologies Used
+## Technologies Used 
 
 - **React**: JavaScript library for building user interfaces.
 - **Tailwind CSS**: CSS framework for modern and responsive design.
 - **Firebase**: Application development platform for real-time database and authentication.
 - **Redux**: Library for global state management in the application.
 
-## Features
+## Features 🎉
 
 - **Starship list**: General view of each starship in Starwars Universe.
 - **Details for each starship**: Detailed view of each starship with comprehensive information.
@@ -21,7 +21,11 @@
 - **Films**: List of films where each starship appear.
 - **Authentication**: User registration and login via Firebase Authentication.
 
-## Installation
+## URL Starwars-Wiki - vercel ⚡
+
+[Star Wars Wiki](https://starwars-wiki-react.vercel.app/)
+
+## Installation 💻
 
 Follow these steps to clone and run the project locally.
 
@@ -102,10 +106,6 @@ Thank you for using Star Wars Starships Catalog!
 May the Force be with you!
 
 ---
-
-## URL Starwars-Wiki - vercel
-
-[Star Wars Wiki](https://starwars-wiki-react.vercel.app/)
 
 ## Images
 
