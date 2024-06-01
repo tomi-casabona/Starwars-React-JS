@@ -1,6 +1,6 @@
 # Star Wars | Wiki
 
-![Star Wars Logo](https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254)
+![Star Wars Logo](./src/assets/images-md/Header.png)
 
 ## Description
 
@@ -56,6 +56,38 @@ Follow these steps to clone and run the project locally.
    ```
 
 The application should be available at [http://localhost:5173](http://localhost:5173).
+
+## Firebase Project Setup
+
+This README will guide you through the steps required to create a project in Firebase and configure the necessary environment variables to integrate it with an application using Vite.
+
+### Step 1: Create a Project in Firebase
+
+1. Go to [Firebase Console](https://console.firebase.google.com/).
+2. Click on "Add project".
+3. Enter a name for your project and follow the on-screen instructions to create it.
+
+### Step 2: Obtain Your Firebase Credentials
+
+1. In the Firebase console, select the project you just created.
+2. Go to the "Settings" section (gear icon) in the top left corner.
+3. Click on "Project settings".
+4. Scroll down to the "Your apps" section.
+5. Select the web app for which you want to obtain the credentials, or click on "Add app" if you haven't created one yet.
+6. Copy the provided credentials, including:
+   - API Key
+   - Auth Domain
+   - Project ID
+   - Storage Bucket
+   - Messaging Sender ID
+   - App ID
+   - Measurement ID
+
+### Step 3: Configure Environment Variables
+
+1. Open your project in the code editor.
+2. Create a `.env.local` file in the root of the project if it doesn't already exist.
+3. Add the following environment variables to the `.env.local` file with the credentials you copied in the previous step:
 
 ## Usage
 
