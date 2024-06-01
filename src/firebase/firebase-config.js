@@ -15,8 +15,19 @@ const firebaseConfig = {
 };
 
 // Verifica que las variables de entorno estén definidas
-if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId || !firebaseConfig.storageBucket || !firebaseConfig.messagingSenderId || !firebaseConfig.appId || !firebaseConfig.measurementId) {
-  console.error("Firebase configuration is missing one or more environment variables.", firebaseConfig);
+if (
+  !firebaseConfig.apiKey ||
+  !firebaseConfig.authDomain ||
+  !firebaseConfig.projectId ||
+  !firebaseConfig.storageBucket ||
+  !firebaseConfig.messagingSenderId ||
+  !firebaseConfig.appId ||
+  !firebaseConfig.measurementId
+) {
+  console.error(
+    "Firebase configuration is missing one or more environment variables.",
+    firebaseConfig
+  );
 }
 
 // Initialize Firebase
