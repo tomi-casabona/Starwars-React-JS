@@ -35,7 +35,7 @@ export const SignIn = () => {
         <p className="font-normal text-gray-500">
           Already have an account?{" "}
           <button
-            onClick={() => navigate("/LogIn")}
+            onClick={() => navigate("/logIn")}
             className="underline hover:no-underline text-gray-700"
           >
             Login
