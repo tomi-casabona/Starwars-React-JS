@@ -1,6 +1,6 @@
 # Star Wars | Wiki
 
-![Star Wars Logo](https://starwarsblog.starwars.com/wp-content/uploads/2021/04/SW_logo_stacked_color_RGB.jpg)
+![Star Wars Logo](https://lumiere-a.akamaihd.net/v1/images/sw_logo_stacked_2x-52b4f6d33087_7ef430af.png?region=0,0,586,254)
 
 ## Description
 
@@ -81,4 +81,4 @@ May the Force be with you!
 ![Login page](./src/assets/images-md/Login.png)
 ![Signin page](./src/assets/images-md/Signin.png)
 ![Starships page](./src/assets/images-md/Starships.png)
-![Millenium Falcon description](./src/assets/images-md/MilleniumFalcon.png.png)
+![Millenium Falcon description](./src/assets/images-md/MilleniumFalcon.png)
